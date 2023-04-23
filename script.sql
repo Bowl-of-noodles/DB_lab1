@@ -1,22 +1,34 @@
 \prompt 'Введите название таблицы: ' table_name
 set myvars.tbl to :table_name;
+
 do
 $$
+
     declare
 
         column_record  record;
+
         table_id       oid;
+
         my_column_name text;
+
         column_number  int2vector;
+
         trigger_name   text;
+
         result         text;
+
     begin
-        select "oid" into table_id from pg_catalog.pg_class where "relname" = current_settings('myvars.tbl');
+
+        select "oid" into table_id from pg_catalog.pg_class where "relname" = CAST(current_setting('myvars.tbl') AS name);
+
         if (table_id) is null then
+
             raise 'Cannot find table with this name';
+
         else
 
-            raise notice 'Таблица: %', 'table';
+            raise notice 'Таблица: %', current_setting('myvars.tbl');
 
             raise notice 'Имя столбца    Имя триггера';
 
