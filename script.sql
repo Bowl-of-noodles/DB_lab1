@@ -84,7 +84,8 @@ $$
 
 		                my_column_name = column_record.attname;
 
-		                select ARRAY (select tgname from studs.pg_catalog.pg_trigger where tgrelid = table_id AND (column_record.attnum = any(tgattr))) into trigger_name;
+		                select ARRAY (select tgname from studs.pg_catalog.pg_trigger where tgrelid = table_id AND 
+					      (column_record.attnum = any(tgattr))) into trigger_name;
 
 		                if trigger_name is null then
 
