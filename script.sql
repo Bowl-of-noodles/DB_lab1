@@ -12,13 +12,13 @@ $$
         table_id       oid;
         schema_id	oid;
         
-	    input		text;
-	    table_name	text; 
-	    schema_name	text;
-	    db_name	text;
+	input		text;
+	table_name	text; 
+	schema_name	text;
+	db_name	text;
  
         my_column_name text;
-	    column_record  record;
+	column_record  record;
         column_number  int2vector;
         trigger_name   text;
         result         text;
